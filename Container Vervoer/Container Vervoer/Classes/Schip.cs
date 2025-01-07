@@ -74,6 +74,7 @@ namespace Container_Vervoer.Classes
             }
             return PlaatsRichting(container);
         }
+
         private bool PlaatsRichting(Container container)
         {
             int linkseGewicht = LinkseRij().Sum(row => row.Gewicht());
@@ -83,6 +84,7 @@ namespace Container_Vervoer.Classes
                 ? PlaatsLinks(container)
                 : PlaatsRechts(container));
         }
+
         private List<Rij> LinkseRij()
         {
             List<Rij> linkseRij = rijen.GetRange(0, Rijen.Count / 2);
@@ -93,6 +95,7 @@ namespace Container_Vervoer.Classes
         {
             return rijen.GetRange(rijen.Count % 2 == 0 ? rijen.Count / 2 : rijen.Count / 2 + 1, rijen.Count / 2);
         }
+
         private bool PlaatsLinks(Container container)
         {
             foreach (Rij rij in LinkseRij())
@@ -102,6 +105,7 @@ namespace Container_Vervoer.Classes
                     return true;
                 }
             }
+
             return false;
         }
         private bool PlaatsRechts(Container container)

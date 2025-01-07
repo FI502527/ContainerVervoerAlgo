@@ -28,8 +28,8 @@ namespace Unit_Tests
         {
             //Act
             Rij rij = new Rij(2);
-            Container container1 = new Container("Container 1", 10, Container_Vervoer.Type.Normaal);
-            Container container2 = new Container("Container 2", 15, Container_Vervoer.Type.Normaal);
+            Container container1 = new Container("Container 1", 10, Container_Vervoer.ContainerType.Normaal);
+            Container container2 = new Container("Container 2", 15, Container_Vervoer.ContainerType.Normaal);
             int totaalGewicht = container1.GetGewicht() + container2.GetGewicht(); 
 
             //Arrange
@@ -44,7 +44,7 @@ namespace Unit_Tests
         {
             //Act
             Rij rij = new Rij(3);
-            Container container1 = new Container("Container 1", 10, Container_Vervoer.Type.Normaal);
+            Container container1 = new Container("Container 1", 10, Container_Vervoer.ContainerType.Normaal);
 
             //Arrange
             rij.ToevoegenContainer(container1);

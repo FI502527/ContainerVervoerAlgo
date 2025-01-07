@@ -21,9 +21,9 @@ namespace Container_Vervoer
         }
         public List<Container> SorteerLijst(List<Container> containers)
         {
-            return containers.Where(container => container.GetType() == Type.Gekoeld).ToList()
-                .Concat(containers.Where(container => container.GetType() == Type.Normaal).ToList())
-                .Concat(containers.Where(container => container.GetType() == Type.Waardevol).ToList())
+            return containers.Where(container => container.GetType() == ContainerType.Gekoeld).ToList()
+                .Concat(containers.Where(container => container.GetType() == ContainerType.Normaal).ToList())
+                .Concat(containers.Where(container => container.GetType() == ContainerType.Waardevol).ToList())
                 .ToList();
         }
     }

@@ -11,12 +11,13 @@ namespace Container_Vervoer.Classes
     {
         private List<Container> stapel = new List<Container>();
         public IReadOnlyList<Container> Stapel { get { return stapel; } }
+
         public bool WaardevolCheck()
         {
             bool status = false;
             foreach(Container container in Stapel)
             {
-                if(container.GetType() == Type.Waardevol)
+                if(container.GetType() == ContainerType.Waardevol)
                 {
                     status = true;
                     break;
@@ -39,7 +40,9 @@ namespace Container_Vervoer.Classes
         }
         public bool RuimteCheck(Container container)
         {
-            if (Gewicht() + container.GetGewicht() < 120)
+            int gewicht = Gewicht();
+            int gewichtContainer = container.GetGewicht();
+            if (gewicht + gewichtContainer <= 120)
             {
                 return true;
             }

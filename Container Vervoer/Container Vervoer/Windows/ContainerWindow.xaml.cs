@@ -53,13 +53,13 @@ namespace Container_Vervoer.Windows
                 }
             }
         }
-        private Type RandomType()
+        private ContainerType RandomType()
         {
             //Kies random type
             //https://stackoverflow.com/questions/3132126/how-do-i-select-a-random-value-from-an-enumeration
-            Array waardes = Enum.GetValues(typeof(Type));
+            Array waardes = Enum.GetValues(typeof(ContainerType));
             Random random = new Random();
-            Type type = (Type)waardes.GetValue(random.Next(waardes.Length));
+            ContainerType type = (ContainerType)waardes.GetValue(random.Next(waardes.Length));
             return type;
         }
         private int RandomGewicht()
@@ -73,17 +73,17 @@ namespace Container_Vervoer.Windows
             if (int.TryParse(tbGewicht.Text, out int gewicht))
             {
                 string typeString = cbType.SelectedItem.ToString().Split(' ').Skip(1).FirstOrDefault();
-                Type type = Type.Normaal;
+                ContainerType type = ContainerType.Normaal;
                 switch (typeString)
                 {
                     case "Normaal":
-                        type = Type.Normaal;
+                        type = ContainerType.Normaal;
                         break;
                     case "Gekoeld":
-                        type = Type.Gekoeld;
+                        type = ContainerType.Gekoeld;
                         break;
                     case "Waardevol":
-                        type = Type.Waardevol;
+                        type = ContainerType.Waardevol;
                         break;
                 }
                 Container container = new Container(nummerContainers.ToString(), gewicht, type);

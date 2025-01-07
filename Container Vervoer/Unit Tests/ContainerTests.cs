@@ -13,11 +13,12 @@ namespace Unit_Tests
             string naam = "Container 1";
 
             //Act
-            Container container = new Container(naam, 10, Container_Vervoer.Type.Normaal);
+            Container container = new Container(naam, 10, ContainerType.Normaal);
 
             //Assert
             Assert.AreEqual(naam, container.GetNaam());
         }
+
         [TestMethod]
         public void GetGewichtTest()
         {
@@ -25,16 +26,17 @@ namespace Unit_Tests
             int gewicht = 10;
 
             //Act
-            Container container = new Container("Container 2", gewicht, Container_Vervoer.Type.Normaal);
+            Container container = new Container("Container 2", gewicht, ContainerType.Normaal);
 
             //Assert
             Assert.AreEqual(gewicht, container.GetGewicht());
         }
+
         [TestMethod]
         public void GetTypeTest()
         {
             //Arrange
-            Container_Vervoer.Type type = Container_Vervoer.Type.Gekoeld;
+            Container_Vervoer.ContainerType type = Container_Vervoer.ContainerType.Gekoeld;
 
             //Act
             Container container = new Container("Container 3", 10, type);

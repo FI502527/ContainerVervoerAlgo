@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Container_Vervoer;
 using Container_Vervoer.Classes;
 
 namespace Unit_Tests
@@ -15,7 +16,7 @@ namespace Unit_Tests
         {
             //Arrange
             ContainerStapel stapel = new ContainerStapel();
-            Container container = new Container("Container 1", 10, Container_Vervoer.Type.Normaal);
+            Container container = new Container("Container 1", 10, ContainerType.Normaal);
 
             //Act
             bool status = stapel.Toevoegen(container);
@@ -23,14 +24,15 @@ namespace Unit_Tests
             //Assert
             Assert.IsTrue(status);
         }
+
         [TestMethod]
         public void ContainerAantalTest()
         {
             //Arrange
             ContainerStapel stapel = new ContainerStapel();
-            Container container1 = new Container("Container 1", 10, Container_Vervoer.Type.Normaal);
-            Container container2 = new Container("Container 2", 15, Container_Vervoer.Type.Gekoeld);
-            Container container3 = new Container("Container 3", 20, Container_Vervoer.Type.Waardevol);
+            Container container1 = new Container("Container 1", 10, ContainerType.Normaal);
+            Container container2 = new Container("Container 2", 15, ContainerType.Gekoeld);
+            Container container3 = new Container("Container 3", 20, ContainerType.Waardevol);
 
             //Act
             stapel.Toevoegen(container1);
@@ -39,15 +41,16 @@ namespace Unit_Tests
 
             //Assert
             Assert.AreEqual(3, stapel.AantalContainers());
+
         }
         [TestMethod]
         public void ContainerStapelGewichtTest()
         {
             //Arrange
             ContainerStapel stapel = new ContainerStapel();
-            Container container1 = new Container("Container 1", 10, Container_Vervoer.Type.Normaal);
-            Container container2 = new Container("Container 2", 15, Container_Vervoer.Type.Gekoeld);
-            Container container3 = new Container("Container 3", 20, Container_Vervoer.Type.Waardevol);
+            Container container1 = new Container("Container 1", 10, ContainerType.Normaal);
+            Container container2 = new Container("Container 2", 15, ContainerType.Gekoeld);
+            Container container3 = new Container("Container 3", 20, ContainerType.Waardevol);
             int totaalGewicht = container1.GetGewicht() + container2.GetGewicht() + container3.GetGewicht();
 
             //Act
@@ -63,20 +66,25 @@ namespace Unit_Tests
         {
             //Arrange
             ContainerStapel stapel = new ContainerStapel();
-            Container container1 = new Container("Container 1", 30, Container_Vervoer.Type.Normaal);
-            Container container2 = new Container("Container 2", 30, Container_Vervoer.Type.Gekoeld);
-            Container container3 = new Container("Container 3", 30, Container_Vervoer.Type.Waardevol);
-            Container container4 = new Container("Container 4", 30, Container_Vervoer.Type.Normaal);
-            Container container5 = new Container("Container 5", 30, Container_Vervoer.Type.Normaal);
+            Container container1 = new Container("Container 1", 30, ContainerType.Normaal);
+            Container container2 = new Container("Container 2", 30, ContainerType.Normaal);
+            Container container3 = new Container("Container 3", 30, ContainerType.Normaal);
+            Container container4 = new Container("Container 4", 30, ContainerType.Normaal);
+            Container container5 = new Container("Container 5", 30, ContainerType.Normaal);
 
             //Act
-            stapel.Toevoegen(container1);
-            stapel.Toevoegen(container2);
-            stapel.Toevoegen(container3);
-            stapel.Toevoegen(container4);
+            bool result1 = stapel.Toevoegen(container1);
+            bool result2 = stapel.Toevoegen(container2);
+            bool result3 = stapel.Toevoegen(container3);
+            bool result4 = stapel.Toevoegen(container4);
+            bool result5 = stapel.Toevoegen(container5);
 
             //Assert
-            Assert.IsFalse(stapel.Toevoegen(container5));
+            Assert.IsTrue(result1);
+            Assert.IsTrue(result2);
+            Assert.IsTrue(result3);
+            Assert.IsTrue(result4);
+            Assert.IsFalse(result5);
         }
     }
 }

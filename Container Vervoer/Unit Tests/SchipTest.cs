@@ -31,8 +31,8 @@ namespace Unit_Tests
         {
             //Arrange
             Schip schip = new Schip(30, 3, 3);
-            Container container1 = new Container("Container 1", 15, Container_Vervoer.Type.Normaal);
-            Container container2 = new Container("Container 2", 15, Container_Vervoer.Type.Normaal);
+            Container container1 = new Container("Container 1", 15, Container_Vervoer.ContainerType.Normaal);
+            Container container2 = new Container("Container 2", 15, Container_Vervoer.ContainerType.Normaal);
             List<Container> containers = new List<Container>{
                 container1,
                 container2
@@ -53,8 +53,8 @@ namespace Unit_Tests
             int breedte = 3;
             int maxGewicht = 30;
             Schip schip = new Schip(maxGewicht, breedte, lengte);
-            Container container1 = new Container("Container 1", 15, Container_Vervoer.Type.Normaal);
-            Container container2 = new Container("Container 2", 15, Container_Vervoer.Type.Normaal);
+            Container container1 = new Container("Container 1", 15, Container_Vervoer.ContainerType.Normaal);
+            Container container2 = new Container("Container 2", 15, Container_Vervoer.ContainerType.Normaal);
             List<Container> containers = new List<Container>{
                 container1, 
                 container2
