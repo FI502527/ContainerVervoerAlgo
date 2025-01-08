@@ -15,7 +15,7 @@ namespace Unit_Tests
         public void ContainerToevoegenTest()
         {
             //Arrange
-            ContainerStapel stapel = new ContainerStapel();
+            ContainerStack stapel = new ContainerStack();
             Container container = new Container("Container 1", 10, ContainerType.Normaal);
 
             //Act
@@ -29,7 +29,7 @@ namespace Unit_Tests
         public void ContainerAantalTest()
         {
             //Arrange
-            ContainerStapel stapel = new ContainerStapel();
+            ContainerStack stapel = new ContainerStack();
             Container container1 = new Container("Container 1", 10, ContainerType.Normaal);
             Container container2 = new Container("Container 2", 15, ContainerType.Gekoeld);
             Container container3 = new Container("Container 3", 20, ContainerType.Waardevol);
@@ -47,7 +47,7 @@ namespace Unit_Tests
         public void ContainerStapelGewichtTest()
         {
             //Arrange
-            ContainerStapel stapel = new ContainerStapel();
+            ContainerStack stapel = new ContainerStack();
             Container container1 = new Container("Container 1", 10, ContainerType.Normaal);
             Container container2 = new Container("Container 2", 15, ContainerType.Gekoeld);
             Container container3 = new Container("Container 3", 20, ContainerType.Waardevol);
@@ -65,7 +65,7 @@ namespace Unit_Tests
         public void VolleStapelToevoegenTest()
         {
             //Arrange
-            ContainerStapel stapel = new ContainerStapel();
+            ContainerStack stapel = new ContainerStack();
             Container container1 = new Container("Container 1", 30, ContainerType.Normaal);
             Container container2 = new Container("Container 2", 30, ContainerType.Normaal);
             Container container3 = new Container("Container 3", 30, ContainerType.Normaal);

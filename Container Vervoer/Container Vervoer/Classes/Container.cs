@@ -8,25 +8,27 @@ namespace Container_Vervoer.Classes
 {
     public class Container
     {
-        private string Naam { get; }
-        private int Gewicht { get; } //IN TON NIET KG
+        public string Name { get; private set; }
+        private int Weight { get; } //IN TON NIET KG
         private ContainerType Type { get; }
 
-        public Container(string naam, int gewicht, ContainerType type)
+        public Container(string name, int weight, ContainerType type)
         {
-
-            Naam = naam;
-            Gewicht = gewicht;
+            Name = name;
             Type = type;
-        }
 
-        public string GetNaam()
-        {
-            return Naam;
+            if (weight > 4 && weight < 30)
+            {
+                Weight = weight;
+            }
+            else
+            {
+                throw new Exception("Container is te licht of te zwaar!");
+            }
         }
-        public int GetGewicht()
+        public int GetWeight()
         {
-            return Gewicht;
+            return Weight;
         }
         public ContainerType GetType()
         {
@@ -34,7 +36,7 @@ namespace Container_Vervoer.Classes
         }
         public override string ToString()
         {
-            return $"Container {Naam} is {Gewicht} ton en {Type}";
+            return $"Container {Name} is {Weight} ton and {Type}";
         }
     }
 }

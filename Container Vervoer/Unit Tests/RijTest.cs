@@ -15,10 +15,10 @@ namespace Unit_Tests
         {
             //Act
             int aantalStapels = 3;
-            Rij rij = new Rij(aantalStapels);
+            Row rij = new Row(aantalStapels);
 
             //Arrange
-            IReadOnlyList<ContainerStapel> rijList = rij.ContainerStapels;
+            IReadOnlyList<ContainerStack> rijList = rij.ContainerStapels;
 
             //Assert
             Assert.AreEqual(aantalStapels, rijList.Count);
@@ -27,7 +27,7 @@ namespace Unit_Tests
         public void GewichtRijTest()
         {
             //Act
-            Rij rij = new Rij(2);
+            Row rij = new Row(2);
             Container container1 = new Container("Container 1", 10, Container_Vervoer.ContainerType.Normaal);
             Container container2 = new Container("Container 2", 15, Container_Vervoer.ContainerType.Normaal);
             int totaalGewicht = container1.GetGewicht() + container2.GetGewicht(); 
@@ -43,12 +43,12 @@ namespace Unit_Tests
         public void ToevoegenContainerTest()
         {
             //Act
-            Rij rij = new Rij(3);
+            Row rij = new Row(3);
             Container container1 = new Container("Container 1", 10, Container_Vervoer.ContainerType.Normaal);
 
             //Arrange
             rij.ToevoegenContainer(container1);
-            IReadOnlyList<ContainerStapel> rijList = rij.ContainerStapels;
+            IReadOnlyList<ContainerStack> rijList = rij.ContainerStapels;
 
             //Assert
             Assert.AreEqual(container1, rijList[1].Stapel[0]);

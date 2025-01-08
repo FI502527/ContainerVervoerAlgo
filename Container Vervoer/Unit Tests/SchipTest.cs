@@ -19,7 +19,7 @@ namespace Unit_Tests
             int maxGewicht = 30;
 
             //Act
-            Schip schip = new Schip(maxGewicht, breedte, lengte);
+            Ship schip = new Ship(maxGewicht, breedte, lengte);
 
             //Assert
             Assert.AreEqual(lengte, schip.GetLengte());
@@ -30,7 +30,7 @@ namespace Unit_Tests
         public void ToevoegenContainersTest()
         {
             //Arrange
-            Schip schip = new Schip(30, 3, 3);
+            Ship schip = new Ship(30, 3, 3);
             Container container1 = new Container("Container 1", 15, Container_Vervoer.ContainerType.Normaal);
             Container container2 = new Container("Container 2", 15, Container_Vervoer.ContainerType.Normaal);
             List<Container> containers = new List<Container>{
@@ -52,7 +52,7 @@ namespace Unit_Tests
             int lengte = 3;
             int breedte = 3;
             int maxGewicht = 30;
-            Schip schip = new Schip(maxGewicht, breedte, lengte);
+            Ship schip = new Ship(maxGewicht, breedte, lengte);
             Container container1 = new Container("Container 1", 15, Container_Vervoer.ContainerType.Normaal);
             Container container2 = new Container("Container 2", 15, Container_Vervoer.ContainerType.Normaal);
             List<Container> containers = new List<Container>{

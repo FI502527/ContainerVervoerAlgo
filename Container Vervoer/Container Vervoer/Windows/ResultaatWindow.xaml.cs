@@ -35,15 +35,15 @@ namespace Container_Vervoer.Windows
             int waarde1 = 0;
             int waarde2 = 0;
 
-            IReadOnlyList<Rij> rijen = Logica.Schip.Rijen;
-            foreach (Rij rij in rijen)
+            IReadOnlyList<Row> rijen = Logica.Schip.Rijen;
+            foreach (Row rij in rijen)
             {
                 StackPanel nieuweStack = new StackPanel
                 {
                     Orientation = Orientation.Vertical
                 };
-                IReadOnlyList<ContainerStapel> stapels = rij.ContainerStapels;
-                foreach (ContainerStapel stapel in stapels)
+                IReadOnlyList<ContainerStack> stapels = rij.ContainerStapels;
+                foreach (ContainerStack stapel in stapels)
                 {
                     Button nieuweStapel = new Button
                     {
@@ -71,8 +71,8 @@ namespace Container_Vervoer.Windows
                 int x = int.Parse(button.Content.ToString().Substring(8, 2));
                 int z = int.Parse(button.Content.ToString().Substring(12));
 
-                Rij rij = Logica.Schip.Rijen[x];
-                ContainerStapel stapel = rij.ContainerStapels[z];
+                Row rij = Logica.Schip.Rijen[x];
+                ContainerStack stapel = rij.ContainerStapels[z];
                 string textOutput = "";
                 if(stapel.Stapel.Count == 0)
                 {

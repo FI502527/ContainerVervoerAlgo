@@ -10,10 +10,10 @@ namespace Container_Vervoer
     public class LogicaSchip
     {
         public List<Container> ContainersPlaatsen = new List<Container>();
-        public Schip Schip;
+        public Ship Schip;
         public LogicaSchip(int schipLengte, int schipBreedte, int schipGewicht)
         {
-            Schip = new Schip(schipGewicht, schipBreedte, schipLengte);
+            Schip = new Ship(schipGewicht, schipBreedte, schipLengte);
         }
         public bool SorteerContainers()
         {

@@ -8,8 +8,8 @@ namespace Container_Vervoer
 {
     public enum ContainerType
     {
-        Normaal,
-        Waardevol,
-        Gekoeld
+        Normal,
+        Valueable,
+        Cooled
     }
 }

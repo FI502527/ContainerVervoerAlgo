@@ -7,7 +7,7 @@ namespace Unit_Tests
     public sealed class ContainerTests
     {
         [TestMethod]
-        public void GetNaamTest()
+        public void GetNameTest()
         {
             //Arrange
             string naam = "Container 1";
@@ -16,11 +16,11 @@ namespace Unit_Tests
             Container container = new Container(naam, 10, ContainerType.Normaal);
 
             //Assert
-            Assert.AreEqual(naam, container.GetNaam());
+            Assert.AreEqual(naam, container.Name);
         }
 
         [TestMethod]
-        public void GetGewichtTest()
+        public void GetWeightTest()
         {
             //Arrange
             int gewicht = 10;
@@ -36,13 +36,32 @@ namespace Unit_Tests
         public void GetTypeTest()
         {
             //Arrange
-            Container_Vervoer.ContainerType type = Container_Vervoer.ContainerType.Gekoeld;
+            ContainerType type = ContainerType.Gekoeld;
 
             //Act
             Container container = new Container("Container 3", 10, type);
 
             //Assert
             Assert.AreEqual(type, container.GetType());
+        }
+        [TestMethod]
+        public void TooHeavyContainer()
+        {
+            //Arrange
+            int weight = 100;
+
+            // Act & Assert
+            Assert.ThrowsException<Exception>(() => new Container("Container 1", weight, ContainerType.Normaal));
+        }
+
+        [TestMethod]
+        public void TooLightContainer()
+        {
+            //Arrange
+            int weight = 2;
+
+            // Act & Assert
+            Assert.ThrowsException<Exception>(() => new Container("Container 1", weight, ContainerType.Normaal));
         }
     }
 }
