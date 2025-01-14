@@ -22,28 +22,28 @@ namespace Unit_Tests
             Ship schip = new Ship(maxGewicht, breedte, lengte);
 
             //Assert
-            Assert.AreEqual(lengte, schip.GetLengte());
-            Assert.AreEqual(breedte, schip.GetBreedte());
-            Assert.AreEqual(maxGewicht, schip.GetMaxGewicht());
+            Assert.AreEqual(lengte, schip.GetLength());
+            Assert.AreEqual(breedte, schip.GetWidth());
+            Assert.AreEqual(maxGewicht, schip.GetMaxWeight());
         }
         [TestMethod]
         public void ToevoegenContainersTest()
         {
             //Arrange
             Ship schip = new Ship(30, 3, 3);
-            Container container1 = new Container("Container 1", 15, Container_Vervoer.ContainerType.Normaal);
-            Container container2 = new Container("Container 2", 15, Container_Vervoer.ContainerType.Normaal);
+            Container container1 = new Container("Container 1", 15, Container_Vervoer.ContainerType.Normal);
+            Container container2 = new Container("Container 2", 15, Container_Vervoer.ContainerType.Normal);
             List<Container> containers = new List<Container>{
                 container1,
                 container2
             };
 
             //Act
-            schip.ToevoegenContainers(containers);
+            schip.AddContainers(containers);
 
             //Assert
-            Assert.AreEqual(container1, schip.Rijen[1].ContainerStapels[1].Stapel[0]);
-            Assert.AreEqual(container2, schip.Rijen[1].ContainerStapels[1].Stapel[1]);
+            Assert.AreEqual(container1, schip.Rows[1].ContainerStacks[1].Stack[0]);
+            Assert.AreEqual(container2, schip.Rows[1].ContainerStacks[1].Stack[1]);
         }
         [TestMethod]
         public void SchipGewichtTest()
@@ -53,19 +53,19 @@ namespace Unit_Tests
             int breedte = 3;
             int maxGewicht = 30;
             Ship schip = new Ship(maxGewicht, breedte, lengte);
-            Container container1 = new Container("Container 1", 15, Container_Vervoer.ContainerType.Normaal);
-            Container container2 = new Container("Container 2", 15, Container_Vervoer.ContainerType.Normaal);
+            Container container1 = new Container("Container 1", 15, Container_Vervoer.ContainerType.Normal);
+            Container container2 = new Container("Container 2", 15, Container_Vervoer.ContainerType.Normal);
             List<Container> containers = new List<Container>{
                 container1, 
                 container2
             };
-            int totaalGewicht = container1.GetGewicht() + container2.GetGewicht();
+            int totaalGewicht = container1.GetWeight() + container2.GetWeight();
 
             //Act
-            schip.ToevoegenContainers(containers);
+            schip.AddContainers(containers);
 
             //Assert
-            Assert.AreEqual(totaalGewicht, schip.Gewicht());
+            Assert.AreEqual(totaalGewicht, schip.Weight());
         }
     }
 }

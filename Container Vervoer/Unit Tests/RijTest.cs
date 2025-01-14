@@ -18,7 +18,7 @@ namespace Unit_Tests
             Row rij = new Row(aantalStapels);
 
             //Arrange
-            IReadOnlyList<ContainerStack> rijList = rij.ContainerStapels;
+            IReadOnlyList<ContainerStack> rijList = rij.ContainerStacks;
 
             //Assert
             Assert.AreEqual(aantalStapels, rijList.Count);
@@ -28,30 +28,30 @@ namespace Unit_Tests
         {
             //Act
             Row rij = new Row(2);
-            Container container1 = new Container("Container 1", 10, Container_Vervoer.ContainerType.Normaal);
-            Container container2 = new Container("Container 2", 15, Container_Vervoer.ContainerType.Normaal);
-            int totaalGewicht = container1.GetGewicht() + container2.GetGewicht(); 
+            Container container1 = new Container("Container 1", 10, Container_Vervoer.ContainerType.Normal);
+            Container container2 = new Container("Container 2", 15, Container_Vervoer.ContainerType.Normal);
+            int totaalGewicht = container1.GetWeight() + container2.GetWeight(); 
 
             //Arrange
-            rij.ToevoegenContainer(container1);
-            rij.ToevoegenContainer(container2);
+            rij.TryAddingContainer(container1);
+            rij.TryAddingContainer(container2);
 
             //Assert
-            Assert.AreEqual(totaalGewicht, rij.Gewicht());
+            Assert.AreEqual(totaalGewicht, rij.Weight());
         }
         [TestMethod]
         public void ToevoegenContainerTest()
         {
             //Act
             Row rij = new Row(3);
-            Container container1 = new Container("Container 1", 10, Container_Vervoer.ContainerType.Normaal);
+            Container container1 = new Container("Container 1", 10, Container_Vervoer.ContainerType.Normal);
 
             //Arrange
-            rij.ToevoegenContainer(container1);
-            IReadOnlyList<ContainerStack> rijList = rij.ContainerStapels;
+            rij.TryAddingContainer(container1);
+            IReadOnlyList<ContainerStack> rijList = rij.ContainerStacks;
 
             //Assert
-            Assert.AreEqual(container1, rijList[1].Stapel[0]);
+            Assert.AreEqual(container1, rijList[1].Stack[0]);
         }
     }
 }

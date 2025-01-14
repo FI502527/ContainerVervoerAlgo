@@ -12,14 +12,14 @@ namespace Unit_Tests
     public class ContainerStapelTest
     {
         [TestMethod]
-        public void ContainerToevoegenTest()
+        public void AddingContainerTest()
         {
             //Arrange
             ContainerStack stapel = new ContainerStack();
-            Container container = new Container("Container 1", 10, ContainerType.Normaal);
+            Container container = new Container("Container 1", 10, ContainerType.Normal);
 
             //Act
-            bool status = stapel.Toevoegen(container);
+            bool status = stapel.TryAdding(container);
 
             //Assert
             Assert.IsTrue(status);
@@ -30,17 +30,17 @@ namespace Unit_Tests
         {
             //Arrange
             ContainerStack stapel = new ContainerStack();
-            Container container1 = new Container("Container 1", 10, ContainerType.Normaal);
-            Container container2 = new Container("Container 2", 15, ContainerType.Gekoeld);
-            Container container3 = new Container("Container 3", 20, ContainerType.Waardevol);
+            Container container1 = new Container("Container 1", 10, ContainerType.Normal);
+            Container container2 = new Container("Container 2", 15, ContainerType.Cooled);
+            Container container3 = new Container("Container 3", 20, ContainerType.Valueable);
 
             //Act
-            stapel.Toevoegen(container1);
-            stapel.Toevoegen(container2);
-            stapel.Toevoegen(container3);
+            stapel.TryAdding(container1);
+            stapel.TryAdding(container2);
+            stapel.TryAdding(container3);
 
             //Assert
-            Assert.AreEqual(3, stapel.AantalContainers());
+            Assert.AreEqual(3, stapel.AmountOfContainers());
 
         }
         [TestMethod]
@@ -48,36 +48,36 @@ namespace Unit_Tests
         {
             //Arrange
             ContainerStack stapel = new ContainerStack();
-            Container container1 = new Container("Container 1", 10, ContainerType.Normaal);
-            Container container2 = new Container("Container 2", 15, ContainerType.Gekoeld);
-            Container container3 = new Container("Container 3", 20, ContainerType.Waardevol);
-            int totaalGewicht = container1.GetGewicht() + container2.GetGewicht() + container3.GetGewicht();
+            Container container1 = new Container("Container 1", 10, ContainerType.Normal);
+            Container container2 = new Container("Container 2", 15, ContainerType.Cooled);
+            Container container3 = new Container("Container 3", 20, ContainerType.Valueable);
+            int totaalGewicht = container1.GetWeight() + container2.GetWeight() + container3.GetWeight();
 
             //Act
-            stapel.Toevoegen(container1);
-            stapel.Toevoegen(container2);
-            stapel.Toevoegen(container3);
+            stapel.TryAdding(container1);
+            stapel.TryAdding(container2);
+            stapel.TryAdding(container3);
 
             //Assert
-            Assert.AreEqual(totaalGewicht, stapel.Gewicht());
+            Assert.AreEqual(totaalGewicht, stapel.Weight());
         }
         [TestMethod]
         public void VolleStapelToevoegenTest()
         {
             //Arrange
             ContainerStack stapel = new ContainerStack();
-            Container container1 = new Container("Container 1", 30, ContainerType.Normaal);
-            Container container2 = new Container("Container 2", 30, ContainerType.Normaal);
-            Container container3 = new Container("Container 3", 30, ContainerType.Normaal);
-            Container container4 = new Container("Container 4", 30, ContainerType.Normaal);
-            Container container5 = new Container("Container 5", 30, ContainerType.Normaal);
+            Container container1 = new Container("Container 1", 30, ContainerType.Normal);
+            Container container2 = new Container("Container 2", 30, ContainerType.Normal);
+            Container container3 = new Container("Container 3", 30, ContainerType.Normal);
+            Container container4 = new Container("Container 4", 30, ContainerType.Normal);
+            Container container5 = new Container("Container 5", 30, ContainerType.Normal);
 
             //Act
-            bool result1 = stapel.Toevoegen(container1);
-            bool result2 = stapel.Toevoegen(container2);
-            bool result3 = stapel.Toevoegen(container3);
-            bool result4 = stapel.Toevoegen(container4);
-            bool result5 = stapel.Toevoegen(container5);
+            bool result1 = stapel.TryAdding(container1);
+            bool result2 = stapel.TryAdding(container2);
+            bool result3 = stapel.TryAdding(container3);
+            bool result4 = stapel.TryAdding(container4);
+            bool result5 = stapel.TryAdding(container5);
 
             //Assert
             Assert.IsTrue(result1);
