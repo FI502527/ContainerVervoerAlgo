@@ -24,7 +24,7 @@ namespace Container_Vervoer.Classes
         }
         public bool TryAddingContainer(Container container)
         {
-            switch (container.GetType())
+            switch (container.Type)
             {
                 case ContainerType.Valueable:
                     return TryAddingValueable(container);
@@ -56,7 +56,7 @@ namespace Container_Vervoer.Classes
             {
                 if (number % 2 == 0)
                 {
-                    if (containerStacks[number].Toevoegen(container))
+                    if (containerStacks[number].TryAdding(container))
                     {
                         return true;
                     }

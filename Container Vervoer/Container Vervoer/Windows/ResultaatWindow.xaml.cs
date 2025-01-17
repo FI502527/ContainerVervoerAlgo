@@ -35,14 +35,14 @@ namespace Container_Vervoer.Windows
             int waarde1 = 0;
             int waarde2 = 0;
 
-            IReadOnlyList<Row> rijen = Logica.Schip.Rijen;
+            IReadOnlyList<Row> rijen = Logica.Schip.Rows;
             foreach (Row rij in rijen)
             {
                 StackPanel nieuweStack = new StackPanel
                 {
                     Orientation = Orientation.Vertical
                 };
-                IReadOnlyList<ContainerStack> stapels = rij.ContainerStapels;
+                IReadOnlyList<ContainerStack> stapels = rij.ContainerStacks;
                 foreach (ContainerStack stapel in stapels)
                 {
                     Button nieuweStapel = new Button
@@ -71,16 +71,16 @@ namespace Container_Vervoer.Windows
                 int x = int.Parse(button.Content.ToString().Substring(8, 2));
                 int z = int.Parse(button.Content.ToString().Substring(12));
 
-                Row rij = Logica.Schip.Rijen[x];
-                ContainerStack stapel = rij.ContainerStapels[z];
+                Row rij = Logica.Schip.Rows[x];
+                ContainerStack stapel = rij.ContainerStacks[z];
                 string textOutput = "";
-                if(stapel.Stapel.Count == 0)
+                if(stapel.Stack.Count == 0)
                 {
                     textOutput += "Deze stapel is leeg.";
                 }
                 else
                 {
-                    foreach (Container containers in stapel.Stapel)
+                    foreach (Container containers in stapel.Stack)
                     {
                         textOutput += containers.ToString() + "\n";
                     }

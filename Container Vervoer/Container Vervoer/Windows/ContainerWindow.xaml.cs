@@ -30,22 +30,22 @@ namespace Container_Vervoer.Windows
         }
         public void VeranderInfo(LogicaSchip logica)
         {
-            tLengte.Text = $"Lengte: {logica.Schip.GetLengte()}";
-            tBreedte.Text = $"Breedte: {logica.Schip.GetBreedte()}";
-            tGewicht.Text = $"Gewicht: {logica.Schip.GetMaxGewicht()}";
+            tLengte.Text = $"Lengte: {logica.Schip.Length}";
+            tBreedte.Text = $"Breedte: {logica.Schip.Width}";
+            tGewicht.Text = $"Gewicht: {logica.Schip.MaxWeight}";
         }
 
         private void Randomize(object sender, RoutedEventArgs e)
         {
-            for (int a = 0; a < Logica.Schip.GetLengte(); a++)
+            for (int a = 0; a < Logica.Schip.Length; a++)
             {
-                for (int b = 0; b < Logica.Schip.GetBreedte(); b++)
+                for (int b = 0; b < Logica.Schip.Width; b++)
                 {
                     Container container = new Container(nummerContainers.ToString(), RandomGewicht(), RandomType());
                     nummerContainers++;
 
-                    int huidigeGewicht = Logica.ContainersPlaatsen.Sum(cntrs => cntrs.GetGewicht());
-                    if (huidigeGewicht + container.GetGewicht() <= Logica.Schip.GetMaxGewicht())
+                    int huidigeGewicht = Logica.ContainersPlaatsen.Sum(cntrs => cntrs.Weight);
+                    if (huidigeGewicht + container.Weight <= Logica.Schip.MaxWeight)
                     {
                         lbContainers.Items.Add(container);
                         Logica.ContainersPlaatsen.Add(container);
@@ -73,17 +73,17 @@ namespace Container_Vervoer.Windows
             if (int.TryParse(tbGewicht.Text, out int gewicht))
             {
                 string typeString = cbType.SelectedItem.ToString().Split(' ').Skip(1).FirstOrDefault();
-                ContainerType type = ContainerType.Normaal;
+                ContainerType type = ContainerType.Normal;
                 switch (typeString)
                 {
                     case "Normaal":
-                        type = ContainerType.Normaal;
+                        type = ContainerType.Normal;
                         break;
                     case "Gekoeld":
-                        type = ContainerType.Gekoeld;
+                        type = ContainerType.Cooled;
                         break;
                     case "Waardevol":
-                        type = ContainerType.Waardevol;
+                        type = ContainerType.Valueable;
                         break;
                 }
                 Container container = new Container(nummerContainers.ToString(), gewicht, type);

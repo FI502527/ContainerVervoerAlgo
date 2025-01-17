@@ -9,15 +9,15 @@ namespace Container_Vervoer.Classes
     public class Container
     {
         public string Name { get; private set; }
-        private int Weight { get; } //IN TON NIET KG
-        private ContainerType Type { get; }
+        public int Weight { get; private set; } //IN TON NIET KG
+        public ContainerType Type { get; private set; }
 
         public Container(string name, int weight, ContainerType type)
         {
             Name = name;
             Type = type;
 
-            if (weight > 4 && weight < 30)
+            if (weight >= 4 && weight <= 30)
             {
                 Weight = weight;
             }
@@ -25,14 +25,6 @@ namespace Container_Vervoer.Classes
             {
                 throw new Exception("Container is te licht of te zwaar!");
             }
-        }
-        public int GetWeight()
-        {
-            return Weight;
-        }
-        public ContainerType GetType()
-        {
-            return this.Type;
         }
         public override string ToString()
         {

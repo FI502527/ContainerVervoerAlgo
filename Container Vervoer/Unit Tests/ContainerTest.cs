@@ -4,7 +4,7 @@ using Container_Vervoer.Classes;
 namespace Unit_Tests
 {
     [TestClass]
-    public sealed class ContainerTests
+    public sealed class ContainerTest
     {
         [TestMethod]
         public void GetNameTest()
@@ -13,36 +13,36 @@ namespace Unit_Tests
             string naam = "Container 1";
 
             //Act
-            Container container = new Container(naam, 10, ContainerType.Normaal);
+            Container container = new Container(naam, 10, ContainerType.Normal);
 
             //Assert
             Assert.AreEqual(naam, container.Name);
         }
 
         [TestMethod]
-        public void GetWeightTest()
+        public void WeightTest()
         {
             //Arrange
             int gewicht = 10;
 
             //Act
-            Container container = new Container("Container 2", gewicht, ContainerType.Normaal);
+            Container container = new Container("Container 2", gewicht, ContainerType.Normal);
 
             //Assert
-            Assert.AreEqual(gewicht, container.GetGewicht());
+            Assert.AreEqual(gewicht, container.Weight);
         }
 
         [TestMethod]
-        public void GetTypeTest()
+        public void TypeTest()
         {
             //Arrange
-            ContainerType type = ContainerType.Gekoeld;
+            ContainerType type = ContainerType.Cooled;
 
             //Act
             Container container = new Container("Container 3", 10, type);
 
             //Assert
-            Assert.AreEqual(type, container.GetType());
+            Assert.AreEqual(type, container.Type);
         }
         [TestMethod]
         public void TooHeavyContainer()
@@ -51,17 +51,17 @@ namespace Unit_Tests
             int weight = 100;
 
             // Act & Assert
-            Assert.ThrowsException<Exception>(() => new Container("Container 1", weight, ContainerType.Normaal));
+            Assert.ThrowsException<Exception>(() => new Container("Container 1", weight, ContainerType.Normal));
         }
 
         [TestMethod]
         public void TooLightContainer()
         {
             //Arrange
-            int weight = 2;
+            int weight = 1;
 
             // Act & Assert
-            Assert.ThrowsException<Exception>(() => new Container("Container 1", weight, ContainerType.Normaal));
+            Assert.ThrowsException<Exception>(() => new Container("Container 1", weight, ContainerType.Normal));
         }
     }
 }

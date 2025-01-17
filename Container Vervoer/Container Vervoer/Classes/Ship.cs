@@ -12,27 +12,15 @@ namespace Container_Vervoer.Classes
     {
         private List<Row> rows = new List<Row>();
         public IReadOnlyList<Row> Rows { get { return rows; } }
-        private int MaxWeight { get; }
-        private int Width { get; }
-        private int Length { get; }
+        public int MaxWeight { get; private set; }
+        public int Width { get; private set; }
+        public int Length { get; private set; }
         public Ship(int maxWeight, int width, int length)
         {
             MaxWeight = maxWeight;
             Width = width;
             Length = length;
-            MaakRijen();
-        }
-        public int GetWidth()
-        {
-            return Width;
-        }
-        public int GetLength()
-        {
-            return Length;
-        }
-        public int GetMaxWeight()
-        {
-            return MaxWeight;
+            MakeRows();
         }
         private void MakeRows()
         {
@@ -52,7 +40,7 @@ namespace Container_Vervoer.Classes
         }
         public bool AddContainers(List<Container> containers)
         {
-            int gewichtContainers = containers.Sum(container => container.GetWeight());
+            int gewichtContainers = containers.Sum(container => container.Weight);
             if (gewichtContainers + Weight() < MaxWeight / 2 || gewichtContainers + Weight() > MaxWeight)
             {
                 throw new Exception("Weight too heavy or too light.");

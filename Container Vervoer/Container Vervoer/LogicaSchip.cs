@@ -17,13 +17,13 @@ namespace Container_Vervoer
         }
         public bool SorteerContainers()
         {
-            return Schip.ToevoegenContainers(SorteerLijst(ContainersPlaatsen));
+            return Schip.AddContainers(SorteerLijst(ContainersPlaatsen));
         }
         public List<Container> SorteerLijst(List<Container> containers)
         {
-            return containers.Where(container => container.GetType() == ContainerType.Gekoeld).ToList()
-                .Concat(containers.Where(container => container.GetType() == ContainerType.Normaal).ToList())
-                .Concat(containers.Where(container => container.GetType() == ContainerType.Waardevol).ToList())
+            return containers.Where(container => container.Type == ContainerType.Cooled).ToList()
+                .Concat(containers.Where(container => container.Type == ContainerType.Normal).ToList())
+                .Concat(containers.Where(container => container.Type == ContainerType.Valueable).ToList())
                 .ToList();
         }
     }

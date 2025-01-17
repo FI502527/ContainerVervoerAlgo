@@ -16,7 +16,7 @@ namespace Container_Vervoer.Classes
         {
             foreach(Container container in stack)
             {
-                if(container.GetType() == ContainerType.Valueable)
+                if(container.Type == ContainerType.Valueable)
                 {
                     return true;
                 }
@@ -32,14 +32,24 @@ namespace Container_Vervoer.Classes
             int weight = 0;
             foreach(Container container in stack)
             {
-                weight += container.GetWeight();
+                weight += container.Weight;
+            }
+            return weight;
+        }
+        public int WeightSkippingFirst()
+        {
+            int weight = 0;
+            List<Container> newList = stack.Skip(1).ToList();
+            foreach (Container container in newList)
+            {
+                weight += container.Weight;
             }
             return weight;
         }
         public bool HasRoom(Container container)
         {
-            int weight = Weight();
-            int weightContainer = container.GetWeight();
+            int weight = WeightSkippingFirst();
+            int weightContainer = container.Weight;
             if (weight + weightContainer <= 120)
             {
                 return true;

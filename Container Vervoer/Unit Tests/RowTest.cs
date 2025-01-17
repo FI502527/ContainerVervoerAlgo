@@ -8,7 +8,7 @@ using Container_Vervoer.Classes;
 namespace Unit_Tests
 {
     [TestClass]
-    public class RijTest
+    public class RowTest
     {
         [TestMethod]
         public void AantalRijenTest()
@@ -30,7 +30,7 @@ namespace Unit_Tests
             Row rij = new Row(2);
             Container container1 = new Container("Container 1", 10, Container_Vervoer.ContainerType.Normal);
             Container container2 = new Container("Container 2", 15, Container_Vervoer.ContainerType.Normal);
-            int totaalGewicht = container1.GetWeight() + container2.GetWeight(); 
+            int totaalGewicht = container1.Weight + container2.Weight; 
 
             //Arrange
             rij.TryAddingContainer(container1);
